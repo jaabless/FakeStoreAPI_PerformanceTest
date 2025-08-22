@@ -59,6 +59,7 @@ pipeline {
         }
     }
 
+
     post {
         always {
             archiveArtifacts artifacts: 'results.jtl, reports/**', fingerprint: true
