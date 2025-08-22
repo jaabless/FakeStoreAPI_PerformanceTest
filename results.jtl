@@ -1,0 +1,17 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1755888173795,1578,Login,400,Bad Request,Light_Load 1-1,text,false,,794,251,1,1,https://fakestoreapi.com/auth/login,1578,0,1341
+1755888177266,259,GET all users,200,OK,Light_Load 1-1,text,true,,3731,123,1,1,https://fakestoreapi.com/users,258,0,0
+1755888178501,258,GET a single user,200,OK,Light_Load 1-1,text,true,,1030,125,1,1,https://fakestoreapi.com/users/1,258,0,0
+1755888183463,259,POST a new user,201,Created,Light_Load 1-1,text,true,,754,268,1,1,https://fakestoreapi.com/users,259,0,0
+1755888185789,158,Update a user,200,OK,Light_Load 1-1,text,true,,745,269,1,1,https://fakestoreapi.com/users/1,158,0,0
+1755888187013,265,Delete user,200,OK,Light_Load 1-1,text,true,,1030,211,1,1,https://fakestoreapi.com/users/1,265,0,0
+1755888189125,157,Add to Cart,201,Created,Light_Load 1-1,text,true,,747,288,1,1,https://fakestoreapi.com/carts,156,0,0
+1755888190555,258,Get Cart,200,OK,Light_Load 1-1,text,true,,1678,123,1,1,https://fakestoreapi.com/carts,258,0,0
+1755888192564,159,Update Cart,200,OK,Light_Load 1-1,text,true,,751,208,1,1,https://fakestoreapi.com/carts/1,158,0,0
+1755888196294,266,Delete Cart,200,OK,Light_Load 1-1,text,true,,904,211,1,1,https://fakestoreapi.com/carts/1,266,0,0
+1755888198937,160,Get Products,200,OK,Light_Load 1-1,text,false,"Invalid expression: []
+Unmatched [] in expression.",11384,126,1,1,https://fakestoreapi.com/products,157,0,0
+1755888202829,154,GET Product Details,200,OK,Light_Load 1-1,text,true,,1102,128,1,1,https://fakestoreapi.com/products/1,154,0,0
+1755888205827,155,Add Products,201,Created,Light_Load 1-1,text,true,,747,324,1,1,https://fakestoreapi.com/products,155,0,0
+1755888208631,154,Update Products,200,OK,Light_Load 1-1,text,true,,745,325,1,1,https://fakestoreapi.com/products/1,154,0,0
+1755888211991,256,Delete Product,200,OK,Light_Load 1-1,text,true,,1102,214,1,1,https://fakestoreapi.com/products/1,256,0,0
