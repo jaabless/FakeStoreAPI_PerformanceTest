@@ -30,7 +30,7 @@ pipeline {
                 set "WORK_DIR=%WORKSPACE:\\=/%"
                 set "WORK_DIR=%WORK_DIR:/=\\%"
 
-                jmeter -n -t "%WORK_DIR%\\Magento_Performance_Testing.jmx" ^
+                jmeter -n -t "%WORK_DIR%\\Fake Test Plan.jmx ^
                        -l "%WORK_DIR%\\results.jtl" ^
                        -e -o "%WORK_DIR%\\reports"
                 '''
