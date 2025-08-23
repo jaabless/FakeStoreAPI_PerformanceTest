@@ -17,16 +17,22 @@ pipeline {
             steps {
                 // Clean old reports if any exists
                 bat '''
-                if exist "%WORKSPACE%\\reports" rmdir /S /Q "%WORKSPACE%\\reports"
-                if exist "%WORKSPACE%\\results.jtl" del /Q "%WORKSPACE%\\results.jtl"
-                mkdir "%WORKSPACE%\\reports"
+                set "WORK_DIR=%WORKSPACE:\\=/%"
+                set "WORK_DIR=%WORK_DIR:/=\\%"
+
+                if exist "%WORK_DIR%\\reports" rmdir /S /Q "%WORK_DIR%\\reports"
+                if exist "%WORK_DIR%\\results.jtl" del /Q "%WORK_DIR%\\results.jtl"
+                mkdir "%WORK_DIR%\\reports"
                 '''
 
                 // Run JMeter in non-GUI mode
                 bat '''
-                jmeter -n -t "%WORKSPACE%\\Magento_Performance_Testing.jmx" ^
-                       -l "%WORKSPACE%\\results.jtl" ^
-                       -e -o "%WORKSPACE%\\reports"
+                set "WORK_DIR=%WORKSPACE:\\=/%"
+                set "WORK_DIR=%WORK_DIR:/=\\%"
+
+                jmeter -n -t "%WORK_DIR%\\Magento_Performance_Testing.jmx" ^
+                       -l "%WORK_DIR%\\results.jtl" ^
+                       -e -o "%WORK_DIR%\\reports"
                 '''
             }
         }
@@ -34,14 +40,14 @@ pipeline {
         stage('Verify JMeter Output') {
             steps {
                 bat '''
+                set "WORK_DIR=%WORKSPACE:\\=/%"
+                set "WORK_DIR=%WORK_DIR:/=\\%"
+
                 echo Results file size:
-                dir "%WORKSPACE%\\results.jtl"
+                dir "%WORK_DIR%\\results.jtl"
+
                 echo Showing first 20 lines of results:
-                for /f "tokens=* skip=0 delims=" %%a in ('type "%WORKSPACE%\\results.jtl" ^| more +0') do (
-                    echo %%a
-                    set /a count+=1
-                    if !count! geq 20 exit /b 0
-                )
+                powershell -Command "Get-Content '%WORK_DIR%\\results.jtl' -TotalCount 20"
                 '''
             }
         }
